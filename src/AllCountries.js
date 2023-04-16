@@ -115,24 +115,13 @@ export default function AllCountries() {
       });
   }, []);
 
-  //   const handleAddToRecord = (country) => {
-  //   // You can implement your logic for adding country data to a record
-  //   // For now, let's just log the country data to the console
-  //   setRecords([...records, country]);
-  //   console.log("Adding to record:", country);
-  // };
-  const handleAddToRecord = (country) => {
-    // Check if the selected country is already in the records array
-    const existingRecord = records.find(
-      (record) => record.CountryCode === country.CountryCode
-    );
-  
-    // If the selected country is not already in the records array, add it
-    if (!existingRecord) {
-      setRecords([...records, country]);
-    }
+    const handleAddToRecord = (country) => {
+    // You can implement your logic for adding country data to a record
+    // For now, let's just log the country data to the console
+    console.log(country)
+    setRecords([...records , country])  // make clone of records array to save all countires commuletively 
   };
-  
+
   return (
     <div>
     <div className="cards-container">
