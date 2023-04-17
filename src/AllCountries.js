@@ -97,12 +97,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AllCountries.css"; 
-
-import Records from "./Records";
+import nativeAxios from "./axios"
+// import Records from "./Records";
 
 export default function AllCountries() {
   const [countries, setCountries] = useState([]);
-  const [records, setRecords] = useState([]);
+  // const [records, setRecords] = useState([]);
 
   useEffect(() => {
     axios
@@ -118,9 +118,35 @@ export default function AllCountries() {
     const handleAddToRecord = (country) => {
     // You can implement your logic for adding country data to a record
     // For now, let's just log the country data to the console
-    console.log(country)
-    setRecords([...records , country])  // make clone of records array to save all countires commuletively 
+
+    const date = new Date(country.Date);
+    
+// Extract the individual components of the date (year, month, day)
+const year = date.getFullYear();
+const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed, so add 1 and pad with leading zero if necessary
+const day = String(date.getDate()).padStart(2, "0"); // Pad day with leading zero if necessary
+
+// Create the formatted date string in "YYYY-MM-DD" format
+const formattedDate = `${year}-${month}-${day}`;
+
+    
+
+    let params={
+      // csrfmiddlewaretoken: country.csrfmiddlewaretoken
+      Country: country.Country,
+      Total_Confirmed_Cases:country.TotalConfirmed,
+      Total_Deaths_Cases: country.TotalDeaths,
+      Total_Recovered_Cases: country.TotalRecovered,
+      Date: formattedDate,
+    }
+    console.log(country.Date)
+    nativeAxios.post("/api/v1/covid/",params).then(res=>{
+             console.log(res,"res")
+    }).catch(error=>{
+      console.log(error)
+    })
   };
+  
 
   return (
     <div>
@@ -131,12 +157,12 @@ export default function AllCountries() {
           <p>Total Confirmed Cases: {country.TotalConfirmed}</p>
           <p>Total Deaths: {country.TotalDeaths}</p>
           <p>Total Recovered: {country.TotalRecovered}</p>
-          <p>Date: {new Date(country.Date).toDateString()}</p>
+          <p>Date:  {new Date(country.Date).toDateString()}</p>
           <button onClick={() => handleAddToRecord(country)}>Add to Record</button>
         </div>
       ))}
     </div>
-    <Records records={records} />
+    {/* <Records records={records} /> */}
     </div>
   );
 }
