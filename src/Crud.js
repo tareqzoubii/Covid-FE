@@ -17,7 +17,7 @@ export default function SearchCountry() {
 
   return (
     <div className="container-crud">
-      <h1>Search Country for Confirmed Cases</h1>
+      <h1 className="txt">Search Country for Confirmed Cases</h1>
       <form>
         <label htmlFor="country">Country:</label>
         <input

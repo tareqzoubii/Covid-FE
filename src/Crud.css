@@ -1,6 +1,6 @@
 
 .container-crud {
-     max-width: 800px;
+     max-width: 900px;
      margin: 0 auto;
      padding: 20px;
    }
@@ -9,10 +9,12 @@
      display: grid;
      gap: 5px;
      margin-bottom: 10px;
+     text-align: center;
    }
    
    label {
      font-weight: bold;
+     text-align: center;
    }
    
    input[type="text"],
@@ -49,24 +51,4 @@
    .cases {
      margin-top: 5px;
    }
-   /* .card-crud {
-     background-color: #6e5959;
-     padding: 20px;
-     border-radius: 4px;
-     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
-   }
-   
-   .card-crud p {
-     margin: 0;
-   }
-   
-   .card-crud .date {
-     font-weight: bold;
-     margin-bottom: 10px;
-   }
-   
-   .card-crud .cases {
-     color: #d35400;
-     font-size: 18px;
-   } */
-   
+  
