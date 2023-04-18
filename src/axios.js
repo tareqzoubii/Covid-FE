@@ -6,7 +6,7 @@ const instance = axios.create({
          'Content-Type': 'application/json'
      },
      mode: 'no-cors',
-     baseURL:"http://localhost:8000/",
+     baseURL:"https://covid-back-end.vercel.app/",
      timeout: 600_000_000,
      responseType: 'json',
      validateStatus: (status) => status < 500
